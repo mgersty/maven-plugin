@@ -2,114 +2,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.gersty</groupId>
-  <artifactId>pojo-maven-plugin</artifactId>
+  <artifactId>plugin-parent</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <packaging>maven-plugin</packaging>
+  <packaging>pom</packaging>
   <prerequisites>
     <maven>3.5</maven>
   </prerequisites>
+  <modules>
+    <module>scala</module>
+    <module>plugin</module>
+  </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.plugin.skipErrorNoDescriptorsFound>true</maven.plugin.skipErrorNoDescriptorsFound>
     <mvn.version>3.8.2</mvn.version>
     <iap.version>17.8.0</iap.version>
     <scala.version>2.11.12</scala.version>
+    <scala.compat.version>2.11</scala.compat.version>
     <logback.version>1.1.2</logback.version>
     <slf4j.version>1.6.1</slf4j.version>
+    <junit.version>5.10.2</junit.version>
   </properties>
-  <dependencies>
-    <!-- IAP Dependencies -->
-    <dependency>
-      <groupId>org.cas.osd.iap</groupId>
-      <artifactId>iap-express-common</artifactId>
-      <version>${iap.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.cas.osd.iap</groupId>
-      <artifactId>iap-annotations</artifactId>
-      <version>${iap.version}</version>
-    </dependency>
+  <dependencyManagement>
+    <dependencies>
 
-    <dependency>
-      <groupId>org.cas.spot</groupId>
-      <artifactId>express-model</artifactId>
-      <version>17.8.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.cas.osd.iapx.text</groupId>
-      <version>${iap.version}</version>
-      <artifactId>iapx-text-express-annotation</artifactId>
-    </dependency>
+      <!-- Loggin Dependencies -->
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <scope>runtime</scope>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <scope>runtime</scope>
+        <version>${logback.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
 
-    <!-- Scala Dependencies -->
-    <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-reflect</artifactId>
-      <version>${scala.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <scope>runtime</scope>
-      <version>${logback.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <scope>runtime</scope>
-      <version>${logback.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-
-    <!-- Junit 5 Dependencies-->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.10.2</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!-- Maven Plugin Dependencies -->
-    <dependency>
-      <groupId>org.apache.maven.plugin-tools</groupId>
-      <artifactId>maven-plugin-annotations</artifactId>
-      <version>${mvn.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven</groupId>
-      <artifactId>maven-plugin-api</artifactId>
-      <version>${mvn.version}</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <!-- Put all jars on the classpath -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.2</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-plugin-plugin</artifactId>
-        <version>${mvn.version}</version>
-      </plugin>
-    </plugins>
-  </build>
+      <!-- Junit 5 Dependencies-->
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

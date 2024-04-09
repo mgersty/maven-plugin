@@ -1,4 +1,4 @@
-package org.gersty.maven_s3_plugin;
+package org.gersty.mavenplugin.plugin;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -14,7 +14,6 @@ public class RunnerTest {
     public void test() throws MojoExecutionException, MojoFailureException {
 
         MavenS3Mojo mojo = new MavenS3Mojo();
-        List<String> test = mojo.test();
-        System.out.println(test);
+        mojo.execute();
     }
 }
