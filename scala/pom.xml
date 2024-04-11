@@ -10,9 +10,6 @@
   <version>0.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>scala-doins</name>
-  <prerequisites>
-    <maven>3.5</maven>
-  </prerequisites>
   <dependencies>
     <!-- IAP Dependencies -->
     <dependency>
@@ -28,14 +25,18 @@
     <dependency>
       <groupId>org.cas.spot</groupId>
       <artifactId>express-model</artifactId>
-      <version>17.8.0-SNAPSHOT</version>
+      <version>${iap.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cas.osd.iapx.text</groupId>
       <version>${iap.version}</version>
       <artifactId>iapx-text-express-annotation</artifactId>
     </dependency>
-    <!-- Scala Dependencies -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.1.0-jre</version>
+    </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${scala.compat.version}</artifactId>
@@ -72,6 +73,7 @@
       <plugin>
         <groupId>org.scalatest</groupId>
         <artifactId>scalatest-maven-plugin</artifactId>
+	<version>2.2.0</version>
         <executions>
           <execution>
             <goals>
